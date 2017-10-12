@@ -23,15 +23,15 @@
 	}
 
 /**** reset.css ****/
-	html,body, div,p,h1,h2,h3,h4,h5,h6,input,button,textarea,select,table,ul,ol,li,dl,dt,dd,label,a,strong{margin:0;padding:0;font-size:14px;font-family:'Nanum Gothic','나눔 고딕','Malgun Gothic','돋움','sans-serif';line-height:1.7em;color:#878079}
+	html,body, div,p,h1,h2,h3,h4,h5,h6,input,button,textarea,select,table,ul,ol,li,dl,dt,dd,label,a,strong{margin:0;padding:0;font-size:12px;font-family:'Nanum Gothic','나눔 고딕','Malgun Gothic','돋움','sans-serif';line-height:1.7em;color:#878079}
 	table {width:100%;table-layout:fixed;border-collapse: collapse;border-spacing: 0;}
 	caption{width:0;height:0;font-size:0;line-height:0;overflow:hidden}
 	address,em{font-style:normal}
-	img,fieldset,iframe{border:0 none}
+	img,fieldset,iframe{border:0;padding:0;margin:0}
 	img,input,select,button,textarea{vertical-align:middle;}
 	label,button,input[type="button"],input[type="submit"]{cursor:pointer;border:0;outline:0;}
-	input{border:0;overflow:visible;background:transparent;}
-	button{padding:0;margin:0;border:0;cursor:pointer;line-height:0;vertical-align:middle;overflow:visible;background:transparent;outline: none;}
+	input{display:inline-block;*display:inline;border:0;overflow:visible;background:transparent;}
+	button{display:inline-block;*display:inline;padding:0;margin:0;border:0;cursor:pointer;line-height:0;vertical-align:middle;overflow:visible;background:transparent;outline: none;}
 	button::-moz-focus-inner,input::-moz-focus-inner, button:active{border:0;padding:0;outline: none;}
 
 	hr{display:none;}
@@ -63,26 +63,33 @@
 	#skipToContent a:focus, #skipToContent a:active {display:block;top:0;width:100%;height:30px;line-height:30px;background:#555;color:#eee;}
 
 	/*form&input base style*/
-	.input-text{display:inline-block;height:18px;line-height:18px;;padding:10px 5px;border:1px solid #e5e5e5;background:#fff;}
-	.ie8 .input-text{}
-	.ie7 .input-text{}
-	.input-text[size="100"]{width:98%}
-	.input-text[size="80"]{width:80%}
-	.input-text[size="20"]{width:150px}
-	.input-text[size="5"]{width:50px}
-	.input-text[type="file"]{padding:0}
-	.input-textarea{display:block;border:1px solid #e5e5e5;padding:5px 3px}
-	.input-textarea[size="100"]{width:99%}
-	.input-span{color:red}
-	.placeholder { color: #fff; }
-	.input-select{margin:0;padding:5px 5px;line-height:14px;;border:1px solid #e5e5e5;color:#666666;background:transparent;}
-	.ie7 .input-select{height:32px;}
-	.radio_area label{padding-right:10px}
-	.input-text::-webkit-input-placeholder { color: #666666;}
-	.input-text::-moz-placeholder {  color: #666666;}
-	.input-text:-ms-input-placeholder { color: #666666;}
-	.input-text:-moz-placeholder { color: #666666;}
+	input{display:inline-block;height:2em;line-height:1em;padding:0.5em;border:1px solid #e5e5e5;background:#fff;}
+	.ie8 input{height:1em;padding:11px 0.5em}
+	input[size="100"]{width:98%}
+	input[size="80"]{width:80%}
+	input[size="20"]{width:200px}
+	input[size="10"]{width:100px}
+	input[size="5"]{width:50px}
+	input[type="file"]{padding:0}
+	input::-webkit-input-placeholder { color: #666666;}
+	input::-moz-placeholder {  color: #666666;}
+	input:-ms-input-placeholder { color: #666666;}
+	input:-moz-placeholder { color: #666666;}
 	input[type="submit"], input[type="reset"], input[type="button"], input[type="text"], input[type="password"]{-webkit-appearance: none;-moz-appearance: none;appearance: none;border-radius: 0px;} /* 모바일 라운드 제거 */
+	
+	textarea{display:block;border:1px solid #e5e5e5;padding:5px 3px}
+	textarea[size="100"]{width:99%}
+	select{padding:1px;margin:0;height:3em;border:1px solid #e5e5e5;color:#666666;background:transparent;}
+	select[width="5"]{width:50px}
+	select[width="10"]{width:100px}
+	select[width="20"]{width:200px}
+
+	.ie8 select{height:3.1em;padding:9px 0}
+	
+	.chk_area .tit{display:inline-block;padding:0 .5em;cursor:pointer;}
+	.chk_area > input{display:none}
+	.chk_area > label{display:inline-block;border:1px solid #eee;height:2em;width:2em;vertical-align:middle;background:#fff;}
+	.chk_area > label.on{background:#ff0}
 
 	/* padding & margin */
 	.pt10{padding-top:10px;}
@@ -94,9 +101,9 @@
 	.mt50{margin-top:50px;}
 
 	/* ui-datepicker */
-	.ui-datepicker {position:absolute;z-index:100 !important;width:16em;padding: .5em;display: none;background:#fff;border:1px solid #ccc;box-shadow:1px 1px 15px #aaa}
+	.ui-datepicker {position:absolute;z-index:100 !important;width:20em;padding: .5em;display: none;background:#fff;border:1px solid #ccc;box-shadow:1px 1px 15px #aaa}
 	.ui-datepicker .ui-datepicker-title{margin:0 20px}
-	.ui-datepicker-trigger{padding-left:3px}
+	.ui-datepicker-trigger{border:1px solid #eee;border-radius:5px;background:#efefef;height:3em;padding:0 .5em}
 	.ui-datepicker .ui-datepicker-title select{height:30px;vertical-align:middle;margin:0}
 	.ui-datepicker .ui-datepicker-header {position: relative;padding: .2em 0;}
 	.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {position:absolute;top:5px;width:1.7em;height: 1.7em;text-indent:-99999px;border:1px solid #ccc;border-radius:3px}
@@ -109,10 +116,10 @@
 	.ui-datepicker table {width: 100%;font-size: .9em;border-collapse: collapse;margin: 0 0 .4em;}
 	.ui-datepicker th {padding: .7em .3em;text-align: center;font-weight: bold;border: 0;}
 	.ui-datepicker td {border: 0;padding: 1px;}
-	.ui-datepicker td span,.ui-datepicker td a {display: block;padding: .2em;text-align: center;text-decoration: none;}
+	.ui-datepicker td span,.ui-datepicker td a {display: block;padding: .2em;font-size:1em;text-align: center;text-decoration: none;}
 	.ui-datepicker .ui-datepicker-buttonpane {*zoom:1;padding-top:.3em;border-left: 0;border-right: 0;border-bottom: 0;}
 	.ui-datepicker .ui-datepicker-buttonpane:after{display:block;clear:both;content:''}
-	.ui-datepicker .ui-datepicker-buttonpane button {float: right;cursor: pointer;width: auto;overflow: visible;line-height:1.2em;padding:.5em;vertical-align:middle;border:1px solid #ccc;border-radius:3px}
+	.ui-datepicker .ui-datepicker-buttonpane button {float: right;cursor: pointer;width: auto;overflow: visible;height:2em;padding:0 1em;vertical-align:middle;border:1px solid #ccc;border-radius:3px}
 	.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {float: left;}
 	.ui-datepicker .ui-state-hover{background-color:#eee;border-radius:.5em}
 	.ui-datepicker .ui-state-active{background-color:#ffbcbc;border-radius:.5em}

@@ -15,6 +15,9 @@ $(document).ready(function(){
 	//tooltip
 	$( ".tooltip" ).tooltip();
 
+	//체크박스 디자인
+	fncCheck($(".chk_area"));
+
 });
 
 //자리수설정
@@ -52,7 +55,11 @@ function headerFixed(el){
 function fncCheck(el){
 	el.each(function(){
 		var label = $(this).find('label');
+		var tit = $(this).find('.tit');
 		var chk = $(this).find('input[type="checkbox"]');
+		tit.click(function(){
+			label.trigger('click');
+		});
 		$(this).find('label').click(function(e){
 			e.preventDefault();
 			if( label.hasClass('on')){
