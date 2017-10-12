@@ -52,15 +52,16 @@ function headerFixed(el){
 
 
 //체크박스 디자인적용
+// focus 추가(접근성)
 function fncCheck(el){
 	el.each(function(){
 		var label = $(this).find('label');
 		var tit = $(this).find('.tit');
 		var chk = $(this).find('input[type="checkbox"]');
-		tit.click(function(){
+		tit.on("click, focusin",function(){
 			label.trigger('click');
 		});
-		$(this).find('label').click(function(e){
+		$(this).find('label').on("click focusin", function(e){
 			e.preventDefault();
 			if( label.hasClass('on')){
 				$(this).removeClass('on');
