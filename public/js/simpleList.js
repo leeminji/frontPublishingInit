@@ -2,7 +2,17 @@
 	/*
 	* @selector : 목록 css 선택자
 	* count : 보이는 목록 갯수
+
+	$(".product_lastest").simpleList([{
+		count : 10
+	},{
+		count:3
+	},{
+		count:4
+	}]);
+
 	*/
+
 	function SimpleList(selector, count){
 		this.$slider = null;
 		this.$ul = null;

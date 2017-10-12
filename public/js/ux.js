@@ -1,73 +1,28 @@
 /* 
-site : KPX Life Science
 ux.js 
 */
 
 
 //초기실행
 $(document).ready(function(){
+	
+	//하위버전 placeholder설정
 	$('input, textarea').placeholder();
-	setDatePicker();
-	fncPath();
-	headerFixed();
-	familySite($(".family_site_area"));
-
+	
+	//datepicker설정
+	setDatePicker($(".datepicker"));
+	
 	//tooltip
 	$( ".tooltip" ).tooltip();
 
-	//컨텐츠로 이동
-	$("#btn_content_go").on("click", function(e){
-		e.preventDefault();
-		var href = $(this).attr('href');
-		var top = $( href ).offset().top-80;
-		$('html, body').stop().animate({scrollTop : top},200);
-	});
-
-	//메인메뉴
-	fncMainGnb();
-
-	//모바일, PC 판단
-	getDevice();
 });
 
-
-function getDevice(){
-	var device = null;
-	if( $(window).width() > 800 ){
-		device = "pc";
-	}else{
-		device = "moblie";
+//자리수설정
+function formatZero(num, len) {
+	while(num.toString().length < len) {
+	num = "0" + num;
 	}
-	return device;
-}
-
-//메인메뉴
-function fncMainGnb(){
-	var menu = $(".main_gnb").children('ul');
-	var menu_list = menu.children('li');
-	menu.find('li').each(function(){
-		$(this).on("mouseover", function(e){
-			$(this).children('ul').fadeIn(400, function(){
-				$(this).clearQueue();
-				$(this).stop();
-			});
-		}).on("mouseleave", function(e){
-			$(this).parent().children('li').children('ul').clearQueue().hide();
-		});
-	});
-}
-
-//다국어설정 url 리턴
-function getLangURL(lang){
-	var url = window.location+"";
-	var res = url.replace("lang=ko", "");
-	url = res.replace("lang=en", "");
-	if( url.indexOf("?") > -1 ){
-		url += "&lang="+lang;
-	}else{
-		url +="?lang="+lang;
-	}
-	return url;
+	return num;
 }
 
 //자바스크립터에서 주소(URL) 상으로 넘어오는 인자(QueryString) 값을 쉽게 파싱해서 사용할 수있는 함수
@@ -77,49 +32,21 @@ function getUrlParams(url) {
 	return params;
 } 
 
-//다국어설정
-function linkGlobal(url){
-	var lang_url = url;
-	var params = getUrlParams(url);
-	var bo_table = params.bo_table;
-
-	if( bo_table ){
-		var re_bo_table = bo_table.split("_");
-		if( re_bo_table[1] ){
-			lang_url = lang_url.replace( bo_table  , re_bo_table[0] );
-		}else{
-			lang_url = lang_url.replace( bo_table  , re_bo_table[0]+"_"+params.lang );
-		}
-	}
-	window.location.href= lang_url;
-}
-
-
 //헤더 고정
-function headerFixed(){
-	var path= $(".content_path_area");
+function headerFixed(el){
+	var path= $(el);
 	if( path.length > 0 ){
 		var top = path.offset().top;
 		$(window).scroll(function(){
 			if( $(this).scrollTop() > top  ){
-				path.addClass('header_fixed');
+				path.addClass('fixedOn');
 			}else{
-				path.removeClass('header_fixed');
+				path.removeClass('fixedOn');
 			}
 		});
 	}
 }
 
-//path 이벤트
-function fncPath(){
-	var list = $(".path_list");
-	list.children('li:gt(0)').each(function(){
-		$(this).children('a').on('click', function(e){
-			e.preventDefault();
-			$(this).next('ul').stop().slideToggle(200);
-		});
-	});
-}
 
 //체크박스 디자인적용
 function fncCheck(el){
@@ -140,12 +67,10 @@ function fncCheck(el){
 }
 
 //달력설정
-function setDatePicker(){
-	$( ".datepicker" ).datepicker({
+function setDatePicker(el){
+	$(el).datepicker({
 		dateFormat : 'yy-mm-dd',
 		showOn: "button",
-		buttonImage: "/public/images/common/icon_calendar.png?v=1",
-		buttonImageOnly: true,
 		buttonText: "Select date",
 		changeMonth: true,
 		changeYear: true,
@@ -155,45 +80,6 @@ function setDatePicker(){
 		showButtonPanel: true
 	});
 }
-
-//셀렉트 박스 링크 이동
-function goSelectLink(select, link_url){
-	select.change(function(){
-		window.location.href = link_url+$(this).val();
-	});
-}
-
-//게시판 카테고리 셀렉트
-function fncCateSelect(){
-	var cate_title = $("#m_cate_title");
-	if( $(document).width() < 640 ){
-		cate_title.off('click');
-		cate_title.click(function(){
-			var ul =  $(this).next('ul');
-			if( ul.css('display') == 'block'){
-				ul.slideUp();
-			}else{
-				ul.slideDown();
-			}
-		});
-	}else{
-		cate_title.next('ul').show();
-		cate_title.off('click');
-	}
-}
-
-
-//레이어팝업 닫기
-function layerPopClose(id){
-	$("#"+id).empty();
-	$(".blind").hide();
-}
-
-//컨텐츠 탑 경로
-function fncContentPath(id){
-	$("#"+id).slideToggle(50);
-}
-
 
 //모바일체크
 function isCheckMobile(){
@@ -208,183 +94,39 @@ function isCheckMobile(){
 	}
 }
 
-//크게보기
-function viewZoom(){
-	$('.btn_zoom').on("click",function(){
-		var get_link = $(this).parent().find('.view_image').attr('href');
-		window.open(get_link, "", "width=500,height=1000");
-	});
-}
-
-//전체 메뉴 열기
-function openAllMenuPop(code){
-	var id_con = $("#all_menu");
-	//전체메뉴
-	$.ajax({
-		url : '/allMenu.php?code='+code
-	}).done(function(data){
-		adjustLayer(data);
-		fncAllMenu();
-		$(window).bind('resizeEnd', function() {
-			fncAllMenu();
-		});
-	});
-	function adjustLayer(data){
-		id_con.parent().css({
-			display:'block'
-		});
-		id_con.show();
-		id_con.append(data);
-	}
-}
-	//반응형 모바일 , PC 판단
-	$(window).resize(function() {
-		if(this.resizeTO) clearTimeout(this.resizeTO);
-		this.resizeTO = setTimeout(function() {
-			$(this).trigger('resizeEnd');
-		}, 500);
-	});
-
-
-//전체메뉴
-function fncAllMenu(){
-	var menu = $(".total_menu_area");
-	menu.find("li").children('a').off("click");
-	menu.find("li").children('ul').attr('style', '');
-	
-	if( getDevice() == 'moblie'){
-		menu.find("li").each(function(){
-			if( $(this).children('ul').length > 0 ){
-				$(this).children('a').on("click", function(e){
-					e.preventDefault();
-					var b_li = $(this).parent();
-					var b_menu = b_li.children('ul');
-					b_li.parent().find('ul').slideUp();
-					if( b_menu.css('display') == 'none'){
-						b_li.addClass("on");
-						b_menu.slideDown();
-					}else{
-						b_li.removeClass("on");
-						b_menu.slideUp();
-					}
-				});
-			}
-		});
+//넓이에 따른 디바이스체크
+function getDevice(){
+	var device = null;
+	if( $(window).width() > 800 ){
+		device = "pc";
 	}else{
-		menu.find(".depth2 > li").each(function(){
-			if( $(this).children('ul.depth3').length > 0 ){
-				$(this).children('a').on("click", function(e){
-					e.preventDefault();
-					$(this).parent().children('ul').toggle();
-				});
-			}
+		device = "moblie";
+	}
+	return device;
+}
+
+//ie8이하 이미지 opacity적용
+function ieOpacityImage(){
+	if(getInternetExplorerVersion()==8 || getInternetExplorerVersion()==7){
+		$('.ie_png').each(function(){
+			var src = String($(this).attr('src'));
+				if (src.indexOf('.png') > -1 ) {
+					$(this).attr('style',"filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='crop',src='" + src + "')");
+				}
 		});
 	}
 }
 
-/* openLayerPop */
-function openLayerPop(id){
-	var blind = $(".blind");
-	var id_con = $("#"+id);
-
-	function adjustLayer(data){
-		blind.fadeIn(10 , function(){
-			id_con.parent().css({
-				display:'block',
-				top : getScrollTop()
-			});
-			id_con.show();
-			id_con.append(data);
-		});
+//ie 버전체크
+function getInternetExplorerVersion() {
+	var rv = -1; // Return value assumes failure.    
+	if (navigator.appName == 'Microsoft Internet Explorer') {
+		var ua = navigator.userAgent;
+		var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+		if (re.exec(ua) != null)            
+		rv = parseFloat(RegExp.$1);    
 	}
-}
-
-//레이어 팝업 닫기
-function closeLayerPop(id){
-	var id_con = $("#"+id);
-	id_con.parent().css('display','none');
-	id_con.empty();
-}
-
-//스크롤 위치
-function getScrollTop(){
-	return $(window).scrollTop();
-}
-
-//콤마찍기
-function comma(str) {
-	str = String(str);
-	return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-}
-
-
-//공지사항
-function upDownList(el){
-	var slider = $(el);
-	var viewer = $(el).find('.list_view');
-	var ul = viewer.children('ul');
-	var list = ul.children('li');
-	var list_size = list.size();
-	var btn_prev = slider.find('.btn_prev');
-	var btn_next = slider.find('.btn_next');
-	var timer;
-	var init = function(){
-		viewer.css({
-			overflow:'hidden'
-		});
-		ul.css({
-			position:"absolute",
-			zIndex:20,
-			marginTop : -list.height()
-		});
-		ul.children('li').eq(-1).prependTo(ul);
-	}
-	if(list_size > 1){
-		init();
-		timer = setInterval(toNext,6000);
-	}
-	btn_prev.on("click",function(e){
-		toPrev();
-		e.preventDefault();
-	});
-	btn_next.on("click",function(e){
-		toNext();
-		e.preventDefault();
-	});
-	function toPrev(){
-		clearInterval(timer);
-		ul.not(":animated").animate({
-			top:-list.height()
-		},300,function(){
-			$(this).children('li').eq(0).appendTo(ul);
-			$(this).css('top',0);
-			timer = setInterval(toNext,6000);
-		});
-	}
-	function toNext(){
-		clearInterval(timer);
-		ul.not(":animated").animate({
-			top:list.height()
-		},300,function(){
-			$(this).children('li').eq(-1).prependTo(ul);
-			$(this).css('top',0);
-			timer = setInterval(toNext,6000);
-		});
-	}
-}
-
-
-
-
-//패밀리사이트
-function familySite(el){
-	var btn = $(el).find('.btn_familysite');
-	var list = $(el).find('ul');
-
-	btn.on("click",function(e){
-		list.slideToggle(100);
-		e.preventDefault();
-	});
+	return rv; 
 }
 
 //탭
@@ -410,30 +152,6 @@ function tabProduct(el, init_num){
 			e.preventDefault();
 		});
 	});
-}
-
-//ie8이하 이미지 opacity적용
-function ieOpacityImage(){
-	if(getInternetExplorerVersion()==8 || getInternetExplorerVersion()==7){
-		$('.ie_png').each(function(){
-			var src = String($(this).attr('src'));
-				if (src.indexOf('.png') > -1 ) {
-					$(this).attr('style',"filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='crop',src='" + src + "')");
-				}
-		});
-	}
-}
-
-//ie 버전체크
-function getInternetExplorerVersion() {
-	var rv = -1; // Return value assumes failure.    
-	if (navigator.appName == 'Microsoft Internet Explorer') {
-		var ua = navigator.userAgent;
-		var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
-		if (re.exec(ua) != null)            
-		rv = parseFloat(RegExp.$1);    
-	}
-	return rv; 
 }
 
 //아코디언
@@ -517,15 +235,11 @@ function bookmarksite(title,url) {
 	var placeholder;
 
 	if (isInputSupported && isTextareaSupported) {
-
 		placeholder = prototype.placeholder = function() {
 			return this;
 		};
-
 		placeholder.input = placeholder.textarea = true;
-
 	} else {
-
 		placeholder = prototype.placeholder = function() {
 			var $this = this;
 			$this
@@ -542,11 +256,9 @@ function bookmarksite(title,url) {
 
 		placeholder.input = isInputSupported;
 		placeholder.textarea = isTextareaSupported;
-
 		hooks = {
 			'get': function(element) {
 				var $element = $(element);
-
 				var $passwordInput = $element.data('placeholder-password');
 				if ($passwordInput) {
 					return $passwordInput[0].value;
@@ -555,7 +267,6 @@ function bookmarksite(title,url) {
 			},
 			'set': function(element, value) {
 				var $element = $(element);
-
 				var $passwordInput = $element.data('placeholder-password');
 				if ($passwordInput) {
 					return $passwordInput[0].value = value;
@@ -677,7 +388,6 @@ function bookmarksite(title,url) {
 			$input.removeClass('placeholder');
 		}
 	}
-
 	function safeActiveElement() {
 		// Avoid IE9 `document.activeElement` of death
 		// https://github.com/mathiasbynens/jquery-placeholder/pull/99
@@ -685,6 +395,4 @@ function bookmarksite(title,url) {
 			return document.activeElement;
 		} catch (exception) {}
 	}
-
 }(this, document, jQuery));
-
