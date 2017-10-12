@@ -1,4 +1,5 @@
 ;(function($){
+	
 	/*
 	* @selector : 목록 css 선택자
 	* count : 보이는 목록 갯수
@@ -10,7 +11,6 @@
 	},{
 		count:4
 	}]);
-
 	*/
 
 	function SimpleList(selector, count){
