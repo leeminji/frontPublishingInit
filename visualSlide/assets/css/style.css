@@ -1,0 +1,92 @@
+@charset 'utf-8';
+@import 'reset.css';
+@import 'jquery.bxslider.css';
+
+/* default */
+.m_data{display:none;}
+.pc_data{display:block;}
+.break{word-break:break-all;}
+
+/* list */
+.list01 li{}
+.list01 > ul > li{position:relative;z-index:20;margin:5px 0;line-height:20px;padding-left:110px;color:#676767}
+.list01 > ul > li .tit{display:block;position:absolute;z-index:25;top:0px;left:0px;width:110px}
+.list01 > ul > li.no{padding-left:0}
+
+/* layout */
+html, body{width:100%;position:relative;z-index:1;}
+.ie7 body{overflow-x:hidden;min-width:1200px}
+
+@media (min-width: 1200px) {
+	.allwrap{max-width:1200px;margin:0 auto;}
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+	.m_data{display:block;}
+	.pc_data{display:none;}
+}
+
+.visual01 {width: 500px;height: 300px;position: relative;text-align: center;}
+.visual01 article {width: 100%;height: 100%;display: block;position: absolute;top: 0;background-position: 50% 50%;background-repeat: no-repeat;@inclue opacity(0);}
+.visual01 article.visual_left01 {@inclue opacity(1);z-index: 1;}
+.visual01 .txt_area {width: 100%;position: absolute;bottom: 50%;margin-bottom: -115px;white-space: pre-line;}
+.visual01 .txt_area h2 {font-size: 60px;line-height: 80px;}
+.visual01 .txt_area h2 a {color: #fff;}
+.visual01 .txt_area p {font-size: 20px;line-height: 30px;font-family: "noto_r", sans-serif;color: #fff;}
+.visual01 .visual_indi {position: absolute;z-index: 199;top: 50%;margin: 170px 0 0 0;width: 100%;text-align: center;}
+.visual01 .visual_indi li {display: inline-block;cursor: pointer;}
+.visual01 .visual_indi li.indi {
+	width: 12px;
+	height: 12px;
+	background-color: #8a8a8d;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	text-indent: -9999px;
+	margin: 0 15px;
+	-webkit-transition: background-color 0.3s ease;
+	-o-transition: background-color 0.3s ease;
+	-moz-transition: background-color 0.3s ease;
+	-ms-transition: background-color 0.3s ease;
+	-kthtml-transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease;
+}
+.visual01 .visual_indi li.indi:first-child {margin-left: 0px;}
+.visual01 .visual_indi li.indi:hover, .visual01 .visual_indi li.indi.on {background-color: #ff8601;}
+.visual01 .visual_indi li.play_btn {
+	width: 22px;
+	height: 22px;
+	background: #f00 50% 50% no-repeat;
+	margin-top: -5px;
+	-webkit-transition: background 0.2s ease;
+	-o-transition: background 0.2s ease;
+	-moz-transition: background 0.2s ease;
+	-ms-transition: background 0.2s ease;
+	-kthtml-transition: background 0.2s ease;
+	transition: background 0.2s ease;
+}
+.visual01 .visual_indi li.play_btn.on {
+	background: #ff0 50% 50% no-repeat;
+}
+
+.visual_btn li {
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	z-index: 10;
+	cursor: pointer;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.visual_btn .visual_left_btn {
+	left: 30px;
+}
+.visual_btn .visual_right_btn {
+	right: 30px;
+}
