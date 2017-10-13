@@ -23,19 +23,21 @@
 	}
 
 /**** reset.css ****/
-	html,body, div,p,h1,h2,h3,h4,h5,h6,input,button,textarea,select,table,ul,ol,li,dl,dt,dd,label,a,strong{margin:0;padding:0;font-size:12px;font-family:'Nanum Gothic','나눔 고딕','Malgun Gothic','돋움','sans-serif';line-height:1.7em;color:#878079}
+	html,body, div,p,h1,h2,h3,h4,h5,h6,input,button,textarea,select,table,ul,ol,li,dl,dt,dd,label,a,strong{margin:0;padding:0;}
+	body, a, input, button, select{font-size:12px;font-family:'Nanum Gothic','나눔 고딕','Malgun Gothic','돋움','sans-serif';line-height:1.7em;color:#878079}
 	table {width:100%;table-layout:fixed;border-collapse: collapse;border-spacing: 0;}
-	caption{width:0;height:0;font-size:0;line-height:0;overflow:hidden}
+	caption, legend {width:0;height:0;font-size:0;line-height:0;overflow:hidden}
 	address,em{font-style:normal}
 	img,fieldset,iframe{border:0;padding:0;margin:0}
 	img,input,select,button,textarea{vertical-align:middle;}
 	label,button,input[type="button"],input[type="submit"]{cursor:pointer;border:0;outline:0;}
-	input{display:inline-block;*display:inline;border:0;overflow:visible;background:transparent;}
+	input{display:inline-block;*display:inline;border:0;}
 	button{display:inline-block;*display:inline;padding:0;margin:0;border:0;cursor:pointer;line-height:0;vertical-align:middle;overflow:visible;background:transparent;outline: none;}
-	button::-moz-focus-inner,input::-moz-focus-inner, button:active{border:0;padding:0;outline: none;}
+	button::-moz-focus-inner,input::-moz-focus-inner, button:active{}
+	button:focus {outline: -webkit-focus-ring-color auto 5px;}
 	select, button{box-sizing: content-box;}
-
 	hr{display:none;}
+
 	a{text-decoration:none;color:#7e7e7e;font-size:14px}
 	a:hover{text-decoration:none;color:#7e7e7e}
 	a:selected, a:visited {outline: none}
@@ -64,16 +66,17 @@
 	#skipToContent a:focus, #skipToContent a:active {display:block;top:0;width:100%;height:30px;line-height:30px;background:#555;color:#eee;}
 
 	/*form&input base style*/
-	input{display:inline-block;height:2em;line-height:1em;padding:0.5em;border:1px solid #e5e5e5;background:#fff;}
+	input{height:2em;line-height:1em;padding:0.5em;border:1px solid #e5e5e5;background:#fff;}
 	.ie8 input{height:1em;padding:11px 0.5em}
 	input[size="100"]{width:98%}
 	input[size="80"]{width:80%}
+	input[size="30"]{width:300px}
 	input[size="20"]{width:200px}
 	input[size="10"]{width:100px}
 	input[size="5"]{width:50px}
 	input[type="file"]{padding:0}
 	input::-webkit-input-placeholder { color: #666666;}
-	input::-moz-placeholder {  color: #666666;}
+	input::-moz-placeholder { color: #666666;}
 	input:-ms-input-placeholder { color: #666666;}
 	input:-moz-placeholder { color: #666666;}
 	input[type="submit"], input[type="reset"], input[type="button"], input[type="text"], input[type="password"]{-webkit-appearance: none;-moz-appearance: none;appearance: none;border-radius: 0px;} /* 모바일 라운드 제거 */
@@ -84,7 +87,8 @@
 	select[width="5"]{width:50px}
 	select[width="10"]{width:100px}
 	select[width="20"]{width:200px}
-
+	select[width="30"]{width:300px}
+	
 	.chk_area .tit{display:inline-block;padding:0 .5em;cursor:pointer;}
 	.chk_area > input{display:none}
 	.chk_area > label{display:inline-block;border:1px solid #eee;height:2em;width:2em;vertical-align:middle;background:#fff;}
@@ -96,7 +100,10 @@
 	.pt30{padding-top:30px;}
 	.pt40{padding-top:40px;}
 	.pt50{padding-top:50px;}
+	.mt10{margin-top:10px;}
 	.mt20{margin-top:20px;}
+	.mt30{margin-top:30px;}
+	.mt40{margin-top:40px;}
 	.mt50{margin-top:50px;}
 
 	/* ui-datepicker */
@@ -142,10 +149,7 @@
 	.ui-widget-content a {color: #333333;}
 
 	/* Corner radius */
-	.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {border-top-left-radius: 3px;}
-	.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {border-top-right-radius: 3px;}
-	.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {border-bottom-left-radius: 3px;}
-	.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {border-bottom-right-radius: 3px;}
+	.ui-corner-all{border-radius: 3px;}
 
 	/* Layout helpers */
 	.ui-helper-hidden {display: none;}

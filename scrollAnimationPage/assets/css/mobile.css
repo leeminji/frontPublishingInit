@@ -1,0 +1,84 @@
+@charset 'utf-8';
+
+/* webfonts
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+@font-face {font-family: 'FontAwesome'; font-style: normal; font-weight: normal; src: url('../fonts/fontawesome-webfont.eot?v=4.3.0'); src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.3.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg'); }
+*/
+
+/* common */
+*, *:after, *:before {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after {content: ' '; display: table; }
+.clearfix:after {clear: both; }
+
+::selection {background: #222222; color: #ffffff; }
+
+body, html {height: 100%; }
+body {cursor: default; overflow-x: hidden; }
+body.locked {overflow-y: hidden; }
+a {color: inherit; text-decoration: none; }
+
+.button {font-size: 0; cursor: pointer; }
+.button:hover {background-position: 0 100%; }
+
+header {z-index: 999; position: fixed; top: 0; left: 0; width: 100%; }
+header h1 {position: absolute; top: 0; left: 0; width: 29%; padding-bottom: 14%; background: url('../images/m/common/logo.png') no-repeat center; background-size: 100%; font-size: 0; }
+header .button {position: absolute; top: 0; right: 0; width: 14%; padding-bottom: 12.5%; background: url('../images/m/common/logo_ig.png') no-repeat center;  background-size: 100%; }
+
+section {position: relative; width: 100%; }
+
+section img.cloud {z-index: 30; position: absolute; top: 0; left: 0; width: 100%; margin-top: -30%; /*64% height*/ }
+section img.tunnel {z-index: 30; position: absolute; top: 0; left: 0; width: 100%; margin-top: -22%; /*44% height*/ }
+
+section img.background {z-index: 0; width: 100%; display: block; }
+section img.layer {z-index: 20; position: absolute; width: 100%; }
+
+div.viewport {display: none; z-index: 10; position: fixed; left: 0; top: 0; width: 100%; height: 100%; text-align: center;  }
+div.viewport:before {content: '\200B'; display: inline-block; height: 100%; vertical-align: middle; }
+div.viewport.static {z-index: 30; position: absolute; display: block !important; }
+
+div.viewport div.centered {position: relative; width: 100%; display: inline-block; vertical-align: middle; }
+div.viewport div.centered img {display: block; margin: 0 auto; }
+div.viewport div.centered .caption {opacity: 0; position: absolute; top: 0; }
+
+div.viewport h2 {font-size: 0; }
+div.viewport h3 {display: none; }
+
+
+section.loading {z-index: 99999; position: fixed; height: 100%; background: #6DE4FD url('../images/00/background.png') no-repeat center; }
+section.loading .box {width: 73px; height: 117px; margin: 0 auto; background-image: url('../images/00/box.png'); }
+section.loading .percentage {width: 53px; height: 32px; margin: 20px auto 0; padding-top: 6px; font: 700 1em/26px 'Arial'; color: #3f3f3f; background-image: url('../images/00/percentage.png'); }
+
+
+section.one {z-index: 10; }
+section.one h2 {display: none; }
+
+section.one img.button {width: 43%; margin-top: 28% !important; margin-bottom: 5% !important; }
+section.one div.content {position: relative; width: 100%; }
+section.one img.box {width: 100%;position:relative;z-index:30 }
+section.one img.aniObject {display: none; position: absolute; top: 0; left: 0; width: 100%; }
+section.one img.aniObject.bear{z-index:35}
+section.one img.indicator {width: 38%; margin-top: 10% !important; }
+div.padding.top {height: 10%; background-color: #01C2BB; }
+section.one img.girl{position:absolute;bottom:-65%;left:0;width:100%}
+
+section.two img.layer {bottom: 20%; }
+section.two div.viewport div.centered .caption {left: 9.5%; width: 81%; }
+section.two div.viewport div.centered .object {margin-top: 25%; width: 17.5%; }
+
+section.three img.layer {bottom: 26%; }
+
+section.three div.viewport div.centered .caption {left: 21%; width: 57%; }
+section.three div.viewport div.centered .object {margin-top: 25%; width: 35%; }
+
+section.four div.viewport div.centered .object {width: 12.5%; }
+section.six img.button {position: absolute; left: 2.5%; bottom: 16%; right:0; width:97% }
+
+section.seven img.button {position: absolute; left: 26%; bottom: 13%; width: 48%; }
+section.seven img.indicator {position: absolute; left: 50%;margin-left:-19%; bottom: 3%; width: 38% }
+section.eight ul.social {position: absolute; width: 100%; bottom: 2%; text-align: center; }
+section.eight ul.social li {position: relative; width: 10%; display: inline-block; margin: 0 2%; }
+section.eight ul.social li a img {width: 100%; }
+section.eight img.button {position: absolute; left: 26%; bottom: 8%; width: 48%; }
+section.eight img.button.button_all {position: absolute; left: 26%; top: 16%; width: 48%; }
+
+

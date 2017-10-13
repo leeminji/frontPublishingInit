@@ -58,10 +58,11 @@ function fncCheck(el){
 		var label = $(this).find('label');
 		var tit = $(this).find('.tit');
 		var chk = $(this).find('input[type="checkbox"]');
-		tit.on("click, focusin",function(){
+		tit.on("click",function(e){
+			e.preventDefault();
 			label.trigger('click');
 		});
-		$(this).find('label').on("click focusin", function(e){
+		$(this).find('label').on("click", function(e){
 			e.preventDefault();
 			if( label.hasClass('on')){
 				$(this).removeClass('on');
