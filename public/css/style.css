@@ -16,12 +16,10 @@
 /* layout */
 html, body{width:100%;position:relative;z-index:1;}
 .ie7 body{overflow-x:hidden;min-width:1200px}
-
-@media (min-width: 1200px) {
-	.allwrap{max-width:1200px;margin:0 auto;}
-}
+.allwrap{max-width:1200px;margin:0 auto;}
 
 @media (max-width: 1200px) {
+	.allwrap{max-width:100%}
 }
 
 @media (max-width: 992px) {

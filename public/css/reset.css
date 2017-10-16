@@ -2,12 +2,13 @@
 
 /**** webfont *****/
 	
-	/*나눔고딕*/
+	/* 나눔고딕 */
 	@font-face {
 		font-family: "Nanum Gothic";
 		font-style: normal;
 		font-weight: normal;
-		src: url('../font/NanumGothic.eot');src: local(※);
+		src: url('../font/NanumGothic.eot');
+		src: local(※);
 		src: url('../font/NanumGothic.eot?#iefix') format('embedded-opentype'),
 			 url('../font/NanumGothic.woff') format('woff'),
 			 url('../font/NanumGothic.ttf') format('truetype');
@@ -16,15 +17,40 @@
 		font-family: "Nanum Gothic";
 		font-style: normal;
 		font-weight: bold;
-		src: url('../font/NanumGothicBold.eot');src: local(※);
+		src: url('../font/NanumGothicBold.eot');
+		src: local(※);
 		src: url('../font/NanumGothicBold.eot?#iefix') format('embedded-opentype'),
 			 url('../font/NanumGothicBold.woff') format('woff'),
 			 url('../font/NanumGothicBold.ttf") format("truetype');
 	}
 
+	/* 본고딕 */
+	@font-face {
+		font-family: "NotoSansKR";
+		font-style: normal;
+		font-weight: normal;
+		src: url('../font/NotoSansKR-Regular.eot');
+		src: local(※);
+		src: url('../font/NotoSansKR-Regular.eot?#iefix') format('embedded-opentype'),
+			 url('../font/NotoSansKR-Regular.woff') format('woff'),
+			 url('../font/NotoSansKR-Regular.woff2') format('woff2'),
+			 url('../font/NotoSansKR-Regular.ttf") format("truetype');
+	}
+	@font-face {
+		font-family: "NotoSansKR";
+		font-style: normal;
+		font-weight: bold;
+		src: url('../font/NotoSansKR-Bold.eot');
+		src: local(※);
+		src: url('../font/NotoSansKR-Bold.eot?#iefix') format('embedded-opentype'),
+			 url('../font/NotoSansKR-Bold.woff') format('woff'),
+			 url('../font/NotoSansKR-Bold.woff2') format('woff2'),
+			 url('../font/NotoSansKR-Bold.ttf") format("truetype');
+	}
+
 /**** reset.css ****/
 	html,body, div,p,h1,h2,h3,h4,h5,h6,input,button,textarea,select,table,ul,ol,li,dl,dt,dd,label,a,strong{margin:0;padding:0;}
-	body, a, input, button, select{font-size:12px;font-family:'Nanum Gothic','나눔 고딕','Malgun Gothic','돋움','sans-serif';line-height:1.7em;color:#878079}
+	body, a, input, button, select{font-size:12px;font-family:'NotoSansKR','나눔 고딕','Malgun Gothic','돋움','sans-serif';line-height:1.7em;color:#878079}
 	table {width:100%;table-layout:fixed;border-collapse: collapse;border-spacing: 0;}
 	caption, legend {width:0;height:0;font-size:0;line-height:0;overflow:hidden}
 	address,em{font-style:normal}
