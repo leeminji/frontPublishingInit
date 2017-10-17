@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Script-Type" content="text/javascript"  />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!--[if IE 7]><html lang="ko" class="ie7"><![endif]-->
+	<!--[if IE 8]><html lang="ko" class="ie8"><![endif]-->
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+	<title>기본</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="js/html5.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="js/ux.js"></script>
+</head>
+<body>
+	<!-- allwrap -->
+	<div class="allwrap" id="allwrap">
+		<!-- header -->
+		<header id="header" class="header">
+			<h1 class="logo">자료자료</h1>
+			<a href="" class="btn_menu">메뉴버튼</a>
+			<!-- gnb -->
+			<nav id="gnb" class="gnb">
+				<h1 class="skip">전체 메뉴</h1>
+				<ul class="clear clearfix">
+					<li><a href="">주메뉴1</a></li>
+					<li><a href="">주메뉴2</a></li>
+					<li><a href="">주메뉴3</a></li>
+				</ul>
+			</nav>
+			<!-- //gnb -->
+		</header>
+		<!-- header -->
+		<hr />
+		<!-- container -->
+		<div class="container" id="container">
+			<div class="content" id="content">
+				<div class="main_link">
+					<ul class="clear clearfix">
+					<li class="link01"><a href="javascript:;" onclick="openPage();">1</a></li>
+					<li class="link02"><a href="javascript:;">2</a></li>
+					<li class="link03"><a href="javascript:;">3</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- //container -->
+		<hr />
+	</div>
+	<!-- //allwrap -->
+
+	<!-- page_area -->
+	<div class="page_area">
+		<div class="inner">
+			<div class="gallery_list_area">
+				<ul class="clear" id="gallery_list"></ul>
+			</div>
+		</div>
+		<div class="close">
+			<a href="javascript:;" onclick="closePage();">닫기</a>
+		</div>
+	</div>
+	<!-- //page_area -->
+
+	<!-- viewer_area -->
+	<div class="viewer_area"  id="viewer_area">
+		<div class="inner">
+			<div class="gallery_viewer_area">
+				<div class="viewer_content" id="viewer_content"></div>
+			</div>
+			<div class="loader"><img src="images/loader.gif" alt="" /></div>
+			<div class="btn">
+				<a href="javascript:;" class="btn_next">다음</a>
+				<a href="javascript:;" class="btn_prev">이전</a>
+			</div>
+		</div>
+		<div class="close">
+			<a href="javascript:;" onclick="closeGallery();">닫기</a>
+		</div>
+		<div class="blind"></div>
+	</div>
+	<!-- //viewer_area -->
+
+	<script type="text/javascript">
+	//<![CDATA[
+		// IEfullScreen
+		function IEfullScreen() {
+			var wscript = new ActiveXObject("Wscript.shell");
+			wscript.SendKeys("{F11}");
+		}
+		//IEfullScreen();
+	//]]>
+	</script>
+</body>
+</html>
